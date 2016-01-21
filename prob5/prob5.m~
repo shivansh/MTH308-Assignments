@@ -1,0 +1,8 @@
+n = 0;
+while n < 20
+    if binCoeff(n, n) ~= 1
+        fprintf('Ineqality at %d, value: \n', n);
+        break;
+    end
+    n = n + 1;
+end
