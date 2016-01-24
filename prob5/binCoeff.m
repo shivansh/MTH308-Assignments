@@ -6,3 +6,4 @@ elseif k == 1
 else
     val = ((n - k + 1)/k) * binCoeff(n, k - 1);
 end
+end
