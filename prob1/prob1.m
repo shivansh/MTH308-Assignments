@@ -11,18 +11,19 @@ function prob1
 
         while n > 0
             coeff = sign/(2*n + 1);
-            val = val + (x*coeff) + 1/(2*(n-1) + 1);      % a(0) is taken care of
             sign = -sign;
+            val = val + (x*coeff) + sign/(2*(n-1) + 1);      % a(0) is taken care of
             n = n - 1;
         end
     end
 
 % Single entry in the table
-computeEntry = @(n) abs(pi - 6 * evalPoly(1/sqrt(3), n)) / pi;
+computeCol1 = @(n) abs(pi - 6*evalPoly(1/sqrt(3), n)) / pi;
+computeCol2 = @(n) abs(pi - 4*evalPoly(1, n)) / pi;
 
 x = 8;
 while x <= 4096
-    fprintf('%5d %f\n', x, computeEntry(x));
+    fprintf('%5d  %e  %e\n', x, computeCol1(x), computeCol2(x));
     x = x*2;
 end
 
