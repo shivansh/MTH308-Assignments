@@ -16,7 +16,7 @@ function problem1
         end
     end
 
-    % Single entry in the table
+    % Compute single entry in the table
     computeCol1 = @(n) abs(pi - 6*evalPoly(1/sqrt(3), n)) / pi;
     computeCol2 = @(n) abs(pi - 4*evalPoly(1, n)) / pi;
 
