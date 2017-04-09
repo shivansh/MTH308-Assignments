@@ -1,0 +1,69 @@
+function problem2(A)
+    n=size(A,1);
+    norm1=0;
+    normin=0;
+    for i=1:n
+        ad=0;
+        for j=1:n
+            ad=ad+A(i,j);
+        end
+        norm1=norm1+abs(ad);
+        if normin<abs(ad)
+            normin=abs(ad);
+        end
+    end
+    [L,U]= problem5(A);
+    v=zeros(n,1);
+    c = ones(n,1);
+    v = zeros(n,1);
+    for i=n:-1:1
+        v(i) = c(i);
+        for j=n:-1:i+1
+            v(i) = v(i) - U(i,j)*v(j);          
+        end
+        v(i) = v(i)/U(i,i);
+        w=v(i);
+        v(i) = -c(i);
+        for j=n:-1:i+1
+            v(i) = v(i) - U(i,j)*v(j);
+        end
+        v(i) = v(i)/U(i,i);
+        if(abs(v(i))>=abs(w))
+            c(i)= -1 ;
+        else
+            v(i)=w;
+        end
+        
+    end  
+    y=v\L';
+    z=y'\A;
+    p=norm(z,1);
+    pi=norm(y,1);
+    ni = p/pi;
+    
+        
+        
+        
+        
+        
+        
+    max=0;
+    for i=1:5
+        y=rand(1,n);
+        sol=y/A;
+        p=norm(sol,1);
+        pi=norm(y,1);
+        ni=p/pi;
+        if(max<ni)
+            max=ni;
+        end
+    end
+    max
+        
+        
+        
+    
+    
+end
+            
+        

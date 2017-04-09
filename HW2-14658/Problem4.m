@@ -6,10 +6,11 @@ function Problem4(n)
         end
     end
     x = 1:n;
-    x = x';           % n-vector with all components 1
+    x = x';            % n-vector with all components 1
     b = H * x;
-    
+
     x = 1:n;
+    x = x';
     for i = n:-1:1
         x(i) = b(i);
         for j = n:-1:i+1
@@ -17,6 +18,11 @@ function Problem4(n)
         end
         x(i) = x(i)/(H(i,i));
     end
-    disp(H*x');
-    disp(b);
+    disp(H*x);
+    r = b - H*x;
+    disp(max(r));      % infinity norm
+    x1 = ones(n,1);
+    d = x - x1;        % delta(x)
+    disp(d);
+    disp(max(d));      % infinity norm
 end
